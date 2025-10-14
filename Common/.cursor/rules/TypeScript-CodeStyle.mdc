@@ -1,0 +1,71 @@
+---
+description: Best practices for formatting TypeScript code.
+globs: *.ts, *.tsx
+---
+
+# Code
+
+## Naming
+
+- Private variables should be prefixed with an underscore. For example: `private _someNumber: number`
+- When a private variable is exposed by a property, the property should have the same name as the private variable but without the underscore. For example: `public get someNumber(): number`
+
+## Grouping and Sorting
+
+- When generating code, group members by type, then sort alphabetically.
+- When grouping members by type, use the following groups IN THIS ORDER:
+  - Private Constants
+  - Protected Constants
+  - Public Constants
+  - Private Variables
+  - Protected Variables
+  - Private Constructors
+  - Protected Constructors
+  - Public Constructors
+  - Private Methods
+  - Protected Methods
+  - Public Methods
+  - Private Properties
+  - Protected Properties
+  - Public Properties
+  - Private Events
+  - Protected Events
+  - Public Events
+
+## Nomenclature
+
+- Consider variables that are not private to be "Public Properties".
+- Consider public variables that start with 'on' and are related to callbacks as "Events".
+- Consider public properties that start with 'on' and are related to callbacks as "Events".
+
+## Regions
+
+- Always surround code groups with a matching named region.
+	- Regions should start with // #region \[GroupName\], for example: `// #region \[Public Methods\]`
+	- Regions should end with // #endregion \[GroupName\], for example: `// #endregion \[Public Methods\]`
+	- // #region \[GroupName\] statements should be followed by one blank line before code begins.
+	- // #endregion \[GroupName\] statements should be preceded by one blank line.
+- When asked to create regions, always use the group names identified in [Grouping and Sorting](#grouping-and-sorting).
+- When asked to create regions, do not create empty regions for groups that don't exist.
+	
+## Comments
+
+- Add standard // code comments inside method blocks where helpful to describe what the code is doing.
+- Add [JSDoc documentation comments](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html) to all Methods, Properties and Events. 
+	- When adding comments, be sure to add them before any metadata annotations.
+	- When adding comments, if multiple lines are needed start with a summary line and include a blank line between the summary and remaining lines.
+	- When documenting methods always document and explain parameters.
+	
+## Imports
+
+- Imports should always be at the top of the file.
+- Imports should always be sorted alphabetically.
+- There should not be any blank lines between import statements.
+
+# Refactoring
+
+- When asked to apply Code Style:
+	1. [Create code groups](#grouping-and-sorting)
+	1. [Create regions](#regions)
+	1. Sort regions using the [grouping and sorting rules](#grouping-and-sorting)
+	1. Add documentation using [code comments](#comments)
