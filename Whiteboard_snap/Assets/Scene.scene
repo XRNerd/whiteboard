@@ -4617,7 +4617,7 @@
     {}
   ScriptInputs:
     "":
-      supabaseProject: !<reference.SupabaseProject> d9e4a4f8-aca5-4d5d-993a-819ef7cee186
+      supabaseProject: !<reference.SupabaseProject> 8550ce6e-d228-43c1-8b04-088bcaf19287
       text: !<reference.Text> ebd0d532-64f3-41cd-89e1-8749a83c2c54
       disableWarningsWhenConfigured: true
       showSetupInstructions: true
