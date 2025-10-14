@@ -234,7 +234,7 @@
     right: 7.500000
     top: 2.250000
   OverflowVertical: Overflow
-  OverflowHorizontal: Overflow
+  OverflowHorizontal: Wrap
   Fill: !<TextFill>
     Mode: Solid
     Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
@@ -1999,6 +1999,7 @@
     - 5f8b460b-8a85-4908-9bfd-3ce8fdc30c55: 7b113325-43e3-4e4b-5366-6a8f63d2c510
     - 7905a6d4-a05b-4073-8e38-ba36171ee5bd: 03016ae7-876e-42c5-61ef-f62f1e9da0bc
     - 83d0f894-a802-4025-bd49-d7fd4b0a9ee2: 93f16c8b-d1f6-44c2-40f3-a7c4722a6032
+    - e31f0596-cc49-4a16-9667-841ecb18d082: 6d767f2a-182a-461f-89db-7347683dcc7d
   Name: HistoryPanel
   Enabled: true
   Layers: 1

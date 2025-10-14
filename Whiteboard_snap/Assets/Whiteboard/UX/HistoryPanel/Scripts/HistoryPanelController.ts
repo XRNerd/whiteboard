@@ -2,6 +2,8 @@ import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger";
 import { Database } from "../../../../DatabaseTypes";
 import { SupabaseClient, createClient } from "SupabaseClient.lspkg/supabase-snapcloud";
 import { SnapCloudRequirements } from "Examples/SnapCloudRequirements";
+const remoteMediaModule = require('LensStudio:RemoteMediaModule');
+const internetModule = require('LensStudio:InternetModule');
 
 /**
  * Manages all aspects of the RAM including solving, visualizing, selection, etc.
@@ -29,7 +31,7 @@ export class HistoryPanelController extends BaseScriptComponent {
 
     @input
     @hint("Text to display OCR or summary")
-    text: Text
+    text: Text;
     @ui.group_end
     /* #endregion [Inspector Inputs] */
 
@@ -50,6 +52,7 @@ export class HistoryPanelController extends BaseScriptComponent {
     }
 
     async signInUser() {
+        print("BEFORE Sign in user");
         const { data, error } = await this.client.auth.signInWithIdToken({} as any)
         print("Sign in user");
         if (error) {
@@ -71,8 +74,60 @@ export class HistoryPanelController extends BaseScriptComponent {
         this.log.d("Loading Data from boardhistory table");
 
         // Just load the first record for now
-        const data = await this.client.from("boardhistory").select("*").limit(1);
-        this.log.d("data loaded: " + JSON.stringify(data));
+        const dataResponse = await this.client.from("boardhistory").select("*").limit(1);
+        const firstRecord = dataResponse.data[0];
+        this.log.d("data loaded: " + JSON.stringify(firstRecord));
+
+        // Set the text
+        this.text.text = firstRecord.text;
+
+        // Load the image
+        this.log.d("loading image from: " + firstRecord.image_url);
+        const fileResponse = await this.client.storage.from("boardsnapshots").download(firstRecord.image_url);
+
+        if (fileResponse.error) {
+            this.log.e("Error fetchig image: " + JSON.stringify(fileResponse.error));
+            return;
+        }
+        else {
+            let dynamicResource = internetModule.makeResourceFromBlob(fileResponse.data);
+            remoteMediaModule.loadResourceAsImageTexture(
+                dynamicResource,
+                (texture) => {
+                    print("Success");
+                    this.image.mainPass.baseTex = texture;
+                },
+                (error) => { print("Failed due to error"); }
+            );
+        }
+
+
+    }
+
+    /**
+     * Load image from JPEG byte array data
+     * 
+     * @param bytes - JPEG encoded byte array
+     */
+    private loadImageFromBytes(bytes: Uint8Array): void {
+        try {
+            // Convert Uint8Array to Base64 string using Lens Studio API
+            const base64String = Base64.encode(bytes);
+
+            // Decode Base64 string to texture using Lens Studio API
+            Base64.decodeTextureAsync(
+                base64String,
+                (texture: Texture) => {
+                    this.log.d("Image texture loaded successfully");
+                    this.image.mainPass.baseTex = texture;
+                },
+                () => {
+                    this.log.e("Failed to decode Base64 texture");
+                }
+            );
+        } catch (error) {
+            this.log.e("Error converting bytes to Base64: " + error);
+        }
     }
     /* #endregion [Private Methods] */
 

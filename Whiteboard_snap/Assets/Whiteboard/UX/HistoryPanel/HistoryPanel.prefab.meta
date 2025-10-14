@@ -33,6 +33,24 @@
   RotationAngle: 0
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/6d767f2a-182a-461f-89db-7347683dcc7d>
+  PrefabRemaps:
+    []
+  Name: HistoryPanelController
+  Enabled: true
+  ScriptAsset: !<reference> 224a4fac-3523-448b-bd3f-435eb96ea78e
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      snapCloudRequirements: !<MappingBased.AssignableType> f34b2ca9-bb3e-4714-ac7f-815de53c88ba
+      image: !<reference.Image> 03016ae7-876e-42c5-61ef-f62f1e9da0bc
+      text: !<reference.Text> e14d4872-78e6-49a5-55bc-b25e74b948bd
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/7b113325-43e3-4e4b-5366-6a8f63d2c510>
   PrefabRemaps:
     []
@@ -49,6 +67,7 @@
     - !<own> 82748391-e515-48bd-5ea6-e512e4474132
   Components:
     - !<own> 93f16c8b-d1f6-44c2-40f3-a7c4722a6032
+    - !<own> 6d767f2a-182a-461f-89db-7347683dcc7d
 - !<SceneObject/82748391-e515-48bd-5ea6-e512e4474132>
   PrefabRemaps:
     []
@@ -172,7 +191,7 @@
     right: 7.500000
     top: 2.250000
   OverflowVertical: Overflow
-  OverflowHorizontal: Overflow
+  OverflowHorizontal: Wrap
   Fill: !<TextFill>
     Mode: Solid
     Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}

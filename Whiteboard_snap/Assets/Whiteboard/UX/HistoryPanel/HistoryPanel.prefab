@@ -29,6 +29,7 @@
     - 7b113325-43e3-4e4b-ac99-95709c2d3aef: 7b113325-43e3-4e4b-5366-6a8f63d2c510
     - 82748391-e515-48bd-a159-1aed1bb8becd: 82748391-e515-48bd-5ea6-e512e4474132
     - 8768e9e6-7344-4669-838f-18dafa8f834a: 8768e9e6-7344-4669-7c70-e72505707cb5
+    - 901fd2e6-12f4-4131-87a7-19bd6e09cdf2: 6d767f2a-182a-461f-89db-7347683dcc7d
     - 93f16c8b-d1f6-44c2-bf0c-583b8dd59fcd: 93f16c8b-d1f6-44c2-40f3-a7c4722a6032
     - e14d4872-78e6-49a5-aa43-4da18b46b742: e14d4872-78e6-49a5-55bc-b25e74b948bd
   Name: HistoryPanel
@@ -44,6 +45,7 @@
     - !<own> 82748391-e515-48bd-a159-1aed1bb8becd
   Components:
     - !<own> 93f16c8b-d1f6-44c2-bf0c-583b8dd59fcd
+    - !<own> 901fd2e6-12f4-4131-87a7-19bd6e09cdf2
 - !<SceneObject/82748391-e515-48bd-a159-1aed1bb8becd>
   PrefabRemaps:
     []
@@ -74,6 +76,24 @@
     []
   Components:
     - !<own> 03016ae7-876e-42c5-9e10-09d0e1625f43
+- !<ScriptComponent/901fd2e6-12f4-4131-87a7-19bd6e09cdf2>
+  PrefabRemaps:
+    []
+  Name: HistoryPanelController
+  Enabled: true
+  ScriptAsset: !<reference> 224a4fac-3523-448b-bd3f-435eb96ea78e
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      snapCloudRequirements: !<MappingBased.AssignableType> f34b2ca9-bb3e-4714-ac7f-815de53c88ba
+      image: !<reference.Image> 03016ae7-876e-42c5-9e10-09d0e1625f43
+      text: !<reference.Text> e14d4872-78e6-49a5-aa43-4da18b46b742
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/93f16c8b-d1f6-44c2-bf0c-583b8dd59fcd>
   PrefabRemaps:
     []
@@ -162,7 +182,7 @@
     right: 7.500000
     top: 2.250000
   OverflowVertical: Overflow
-  OverflowHorizontal: Overflow
+  OverflowHorizontal: Wrap
   Fill: !<TextFill>
     Mode: Solid
     Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
