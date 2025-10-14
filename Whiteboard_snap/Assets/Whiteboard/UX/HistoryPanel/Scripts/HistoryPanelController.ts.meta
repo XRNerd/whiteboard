@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/fa88be01-5f51-416e-98a8-ed27dbfa7e11>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 224a4fac-3523-448b-bd3f-435eb96ea78e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 224a4fac-3523-448b-bd3f-435eb96ea78e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 383ca191-3d40-4bab-8ba3-245f5efca4d4
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/383ca191-3d40-4bab-8ba3-245f5efca4d4>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 2f0a1eb3-8192-438c-9cd5-d1767581e97a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    image: false
+    snapCloudRequirements: false
+    text: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - snapCloudRequirements: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      image: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"group_start", "label":"Services"}'
+    - '// @input AssignableType snapCloudRequirements {"hint":"Reference to SnapCloudRequirements for centralized Supabase configuration"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"UI"}'
+    - '// @input Component.Image image {"hint":"Image to display snapshots"}'
+    - '// @input Component.Text text {"hint":"Text to display OCR or summary"}'
+    - '// @ui {"widget":"group_end"}'
