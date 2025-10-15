@@ -45,6 +45,10 @@ export class HistoryPanelController extends BaseScriptComponent {
     @input
     @hint("Next Button")
     nextButton: RectangleButton;
+
+    @input
+    @hint("Reload Button")
+    reloadButton: RectangleButton;    
     /* #endregion [Inspector Inputs] */
 
     /* #region [Private Methods] */
@@ -215,6 +219,13 @@ export class HistoryPanelController extends BaseScriptComponent {
             this.nextButton.onTriggerUp.add(() => {
                 this.log.d("Next button clicked");
                 this.goToNext();
+            });
+        }
+
+        if (this.reloadButton) {
+            this.reloadButton.onTriggerUp.add(() => {
+                this.log.d("Reload button clicked");
+                this.loadData();
             });
         }
     }

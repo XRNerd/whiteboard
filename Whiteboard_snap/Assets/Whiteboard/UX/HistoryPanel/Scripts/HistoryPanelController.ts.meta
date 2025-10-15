@@ -29,6 +29,7 @@
     image: false
     nextButton: false
     previousButton: false
+    reloadButton: false
     snapCloudRequirements: false
     text: false
   ScriptTypesHidden:
@@ -44,7 +45,8 @@
       image: !<reference.Image> 00000000-0000-0000-0000-000000000000
       text: !<reference.Text> 00000000-0000-0000-0000-000000000000
       previousButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
-      nextButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      reloadButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      nextButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -57,4 +59,5 @@
     - '// @input Component.Text text {"hint":"Text to display OCR or summary"}'
     - '// @ui {"widget":"group_end"}'
     - '// @input AssignableType_1 previousButton {"hint":"Previous Button"}'
-    - '// @input AssignableType_2 nextButton {"hint":"Next Button"}'
+    - '// @input AssignableType_2 reloadButton {"hint":"Reload Button"}'
+    - '// @input AssignableType_3 nextButton {"hint":"Next Button"}'
