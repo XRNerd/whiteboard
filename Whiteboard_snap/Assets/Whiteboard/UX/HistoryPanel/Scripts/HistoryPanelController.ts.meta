@@ -29,6 +29,7 @@
     image: false
     nextButton: false
     previousButton: false
+    refObjectManager: false
     reloadButton: false
     snapCloudRequirements: false
     text: false
@@ -47,6 +48,7 @@
       previousButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       nextButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
       reloadButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      refObjectManager: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -61,3 +63,6 @@
     - '// @input AssignableType_1 previousButton {"hint":"Previous Button"}'
     - '// @input AssignableType_2 nextButton {"hint":"Next Button"}'
     - '// @input AssignableType_3 reloadButton {"hint":"Reload Button"}'
+    - '// @ui {"widget":"group_start", "label":"Objects Manager"}'
+    - // @input AssignableType_4 refObjectManager
+    - '// @ui {"widget":"group_end"}'

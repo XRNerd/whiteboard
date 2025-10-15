@@ -2314,7 +2314,7 @@
   PrefabRemaps:
     []
   Name: DebugText
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -7267,7 +7267,7 @@
   PrefabRemaps:
     []
   Name: DebugImage
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 15.000000, z: 0.000000}
@@ -11411,6 +11411,7 @@
       previousButton: !<MappingBased.AssignableType_1> c03c3fdf-e2b0-4cd2-92fa-41ee03c8f1fc
       nextButton: !<MappingBased.AssignableType_2> cbb2bfa2-c432-4d5c-8acc-b4f1bdf9d0bc
       reloadButton: !<MappingBased.AssignableType_3> ebcc2ebb-b5a1-472b-b3c0-0e09172fa891
+      refObjectManager: !<MappingBased.AssignableType_4> a11a6987-0327-4bef-a36c-07d19d1dcd1c
   ScriptTypes:
     "":
       {}

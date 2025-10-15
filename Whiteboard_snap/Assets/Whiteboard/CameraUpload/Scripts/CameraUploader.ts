@@ -11,7 +11,7 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
     @ui.group_end
 
     @ui.group_start('Inputs')
-    @input refObjManager : RefObjectManager;
+    @input refObjManager: RefObjectManager;
     @ui.group_end
 
     private cameraModule: CameraModule = require('LensStudio:CameraModule');
@@ -47,7 +47,7 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
     }
 
     private async addHistoryRecord(image_url: string): Promise<void> {
-        this.refObjManager.snapshotToString();
+        // this.refObjManager.snapshotToString();
 
         const result = await this.client.from("boardhistory").insert({
             image_url: image_url,

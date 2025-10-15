@@ -5,6 +5,7 @@ import { SnapCloudRequirements } from "Examples/SnapCloudRequirements";
 const remoteMediaModule = require('LensStudio:RemoteMediaModule');
 const internetModule = require('LensStudio:InternetModule');
 import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { RefObjectManager } from "RefObjectManager";
 
 /**
  * Manages all aspects of the RAM including solving, visualizing, selection, etc.
@@ -48,7 +49,13 @@ export class HistoryPanelController extends BaseScriptComponent {
 
     @input
     @hint("Reload Button")
-    reloadButton: RectangleButton;    
+    reloadButton: RectangleButton;
+
+    @ui.group_start('Objects Manager')
+    @input
+    refObjectManager: RefObjectManager;
+    @ui.group_end
+
     /* #endregion [Inspector Inputs] */
 
     /* #region [Private Methods] */
@@ -91,7 +98,7 @@ export class HistoryPanelController extends BaseScriptComponent {
 
         // Load all records
         const dataResponse = await this.client.from("boardhistory").select("*").order("created_at", { ascending: false });
-        
+
         if (dataResponse.error) {
             this.log.e("Error loading data: " + JSON.stringify(dataResponse.error));
             return;
@@ -124,7 +131,8 @@ export class HistoryPanelController extends BaseScriptComponent {
         this.log.d(`Loading record ${index + 1}/${this.totalRecords}: ${JSON.stringify(record)}`);
 
         // Set the text
-        this.text.text = record.text;
+        //this.text.text = record.text;
+        this.refObjectManager.applySnapshot(record.text);
 
         // Load the image
         this.log.d("loading image from: " + record.image_url);

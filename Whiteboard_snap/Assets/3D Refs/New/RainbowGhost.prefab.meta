@@ -164,13 +164,11 @@
   Enabled: true
   ScriptAsset: !<reference> 67c294b4-0d40-496b-bb83-567597f45b76
   ScriptInputsDefault:
-    manager: true
     modelId: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
-      manager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       modelId: ""
   ScriptTypes:
     "":

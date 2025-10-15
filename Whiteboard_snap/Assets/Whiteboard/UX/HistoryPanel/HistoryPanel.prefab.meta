@@ -209,7 +209,7 @@
   Enabled: true
   ScriptAsset: !<reference> 224a4fac-3523-448b-bd3f-435eb96ea78e
   ScriptInputsDefault:
-    {}
+    refObjectManager: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -220,6 +220,7 @@
       previousButton: !<MappingBased.AssignableType_1> 97ad63fb-fda1-428c-b214-1a9f62d21463
       nextButton: !<MappingBased.AssignableType_2> 4f09d4de-94de-4d05-9473-2e3ef2f363b3
       reloadButton: !<MappingBased.AssignableType_3> 84fbd322-ddf8-42b4-827b-1d4e7df2bc56
+      refObjectManager: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     "":
       {}
