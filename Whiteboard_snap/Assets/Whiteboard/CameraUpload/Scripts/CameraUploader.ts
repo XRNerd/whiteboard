@@ -1,5 +1,4 @@
 import { BaseSupaBaseConnectingController } from "Whiteboard/UX/HistoryPanel/Scripts/BaseSupaBaseConnectingController";
-const remoteMediaModule = require('LensStudio:RemoteMediaModule') as RemoteMediaModule
 
 @component
 export class CameraUploader extends BaseSupaBaseConnectingController {
@@ -11,7 +10,6 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
     @ui.group_end
 
     private cameraModule: CameraModule = require('LensStudio:CameraModule');
-    private internetModule = require('LensStudio:InternetModule') as InternetModule;
 
     private cameraTexture: Texture;
     private cameraRequest: CameraModule.CameraRequest;
@@ -25,7 +23,7 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
         super.onAwake();
     }
 
-    private getCameraFrame(): void {
+    public getCameraFrame(): void {
         this.cameraRequest = CameraModule.createCameraRequest();
         this.cameraRequest.cameraId = CameraModule.CameraId.Default_Color;
 
@@ -42,7 +40,6 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
         var result = await this.addSnapshotTexture(singleTexture);
         this.DebugLog("Uploaded snapshot, result: " + result);
     }
-
 
     private async addSnapshotBase64(base64String: string): Promise<string> {
         const result = await this.client.functions.invoke("addsnapshot", {
@@ -61,8 +58,6 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
         });    
     }
 
-
- 
     private DebugLog(message: string): void {
         this.text.text = message;
         print(message);
