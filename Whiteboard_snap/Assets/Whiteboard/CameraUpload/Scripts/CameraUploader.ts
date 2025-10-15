@@ -17,9 +17,9 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
     private registration: EventRegistration;
 
     onAwake() {
-        this.createEvent("TapEvent").bind(() => {
-            this.getCameraFrame();
-        });
+        // this.createEvent("TapEvent").bind(() => {
+        //     this.getCameraFrame();
+        // });
         super.onAwake();
     }
 
