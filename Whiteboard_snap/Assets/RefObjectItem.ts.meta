@@ -26,7 +26,8 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    {}
+    manager: false
+    modelId: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -36,10 +37,11 @@
   Attachments:
     []
   DefaultScriptInputs:
-    -
-      {}
+    - manager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      modelId: ""
   ScriptTypes:
     -
       {}
   InputLines:
-    []
+    - // @input AssignableType manager
+    - // @input string modelId

@@ -1,6 +1,7 @@
 import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
 import { InteractorEvent } from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent";
 import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import { RefObjectManager } from "RefObjectManager";
 import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
 //import { FreeDrawManager } from "./FreeDrawManager";
 
@@ -17,6 +18,11 @@ export class RefObjectItem extends BaseScriptComponent {
     public readonly onItemReleased = this.onItemReleasedEvent.publicApi()
 
     public isSpawned: boolean = false;
+
+    // @input
+    // manager: RefObjectManager;
+    @input
+    modelId: string;
 
     onAwake() {
         this.interactable = this.getSceneObject().getComponent(
@@ -41,6 +47,9 @@ export class RefObjectItem extends BaseScriptComponent {
                     this.isGrabbed = false
                     this.onGrabEnded()
                     this.onItemReleasedEvent.invoke(interactorEvent)
+                    // if (this.manager && typeof this.manager.registerObject === 'function') {
+                    //     this.manager.registerObject(this.getSceneObject(), this.modelId || (this.getSceneObject().name || ""));
+                    //}
                 }
             })
             // FreeDrawManager.addItem(this);
@@ -54,6 +63,10 @@ export class RefObjectItem extends BaseScriptComponent {
         this.interactable = this.sceneObject.getComponent(
             Interactable.getTypeName()
         );
+        // Initial registration to capture spawn position
+        // if (this.manager && typeof this.manager.registerObject === 'function') {
+        //     this.manager.registerObject(this.getSceneObject(), this.modelId || (this.getSceneObject().name || ""));
+        // }
     }
 
     onGrabStarted(): void {

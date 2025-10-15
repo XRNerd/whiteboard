@@ -1,16 +1,26 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2021",
-    "isolatedModules": true,
-    "noEmit": true,
-    "skipDefaultLibCheck": true,
     "allowJs": true,
-    "lib": ["es2021"],
-    "types": [],
+    "isolatedModules": true,
+    "lib": [
+      "es2021"
+    ],
+    "module": "commonjs",
+    "noEmit": true,
     "paths": {
-      "*" : ["./*", "../Packages/*", "../Cache/TypeScript/Src/Packages/*"]
-    }
+      "*": [
+        "./*",
+        "../Packages/*",
+        "../Cache/TypeScript/Src/Packages/*"
+      ],
+      "Speech Recognition.lspkg/Scripts/Behavior.lsc/*": [
+        "./Speech Recognition.lspkg/Scripts/Behavior.lsc/*",
+        "../Cache/TypeScript/Src/Assets/Speech Recognition.lspkg/Scripts/Behavior.lsc/*"
+      ]
+    },
+    "skipDefaultLibCheck": true,
+    "target": "es2021",
+    "types": []
   },
   "exclude": [
     "node_modules/typescript/lib/lib.dom.d.ts"
@@ -19,6 +29,7 @@
     "../Cache/TypeScript/lib/LensifyTS/Declarations/**/*.d.ts",
     "./**/*.ts",
     "../Packages/**/*.ts",
-    "../Cache/TypeScript/Src/Packages/**/*.ts"
+    "../Cache/TypeScript/Src/Packages/**/*.ts",
+    "../Cache/TypeScript/Src/Assets/Speech Recognition.lspkg/Scripts/Behavior.lsc/**/*.ts"
   ]
 }

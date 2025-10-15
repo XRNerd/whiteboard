@@ -14,6 +14,7 @@
     - !<own> c0cce5b3-e604-4e43-a2b5-a345bcb04596
     - !<own> 0b7a9190-c5e8-48a1-b7ed-e236a39a76a5
     - !<own> f1dbc23c-e0c1-4b09-89cc-9fb9d4d1c958
+    - !<own> 7b9d2ec8-0f22-49e5-b32e-7165214ccd7e
     - !<own> a0732ca3-1bd4-4d5e-b506-91206710c302
     - !<own> 675c4b87-0cfe-4af5-b322-df5555d51cfb
     - !<own> 24000dfd-a06a-4f8e-b84c-a4de1d238ad0
@@ -4958,11 +4959,15 @@
     - 7905a6d4-a05b-4073-8e38-ba36171ee5bd: 03016ae7-876e-42c5-61ef-f62f1e9da0bc
     - 83d0f894-a802-4025-bd49-d7fd4b0a9ee2: 93f16c8b-d1f6-44c2-40f3-a7c4722a6032
     - 9cbb5414-6637-4f34-b647-50a13a6a6a6f: ed67adf8-917f-476d-8699-0bcd756b730f
+    - aa6f3d8e-755c-47d5-a62f-bbb5c9cc3d57: 0cb77005-b63c-4633-a20d-af16ab76e03d
     - b4721153-4f06-4239-9a16-3090fc5f8bb9: 218932e6-5ee7-4014-8d67-7e2c3bb39a1c
     - c03c3fdf-e2b0-4cd2-92fa-41ee03c8f1fc: 97ad63fb-fda1-428c-b214-1a9f62d21463
     - cbb2bfa2-c432-4d5c-8acc-b4f1bdf9d0bc: 4f09d4de-94de-4d05-9473-2e3ef2f363b3
+    - d13676ad-8060-4f0b-aa64-7f1f1cb27b5d: 26ddba3d-6277-4c0d-bb51-04ed5470c7c4
     - e31f0596-cc49-4a16-9667-841ecb18d082: 6d767f2a-182a-461f-89db-7347683dcc7d
+    - ebcc2ebb-b5a1-472b-b3c0-0e09172fa891: 84fbd322-ddf8-42b4-827b-1d4e7df2bc56
     - f282948b-c196-4208-80dd-4f7b16180afe: 8fd27f19-72aa-4a92-9d52-6628aa1dd69a
+    - f8b28522-1b69-488c-a48b-a20d1ea6eab4: 440a91f5-27af-40b9-92bd-638d63a7cb3f
   Name: HistoryPanel
   Enabled: true
   Layers: 1
@@ -4975,6 +4980,7 @@
     - !<own> 2048afe6-d1e6-40cb-942d-ef32dd779587
     - !<own> 17315eb9-68c2-40b7-90e3-4a63d2639467
     - !<own> 09c2ee19-856d-43ca-8a30-d5cd27aac79c
+    - !<own> d13676ad-8060-4f0b-aa64-7f1f1cb27b5d
     - !<own> b4721153-4f06-4239-9a16-3090fc5f8bb9
   Components:
     - !<own> 83d0f894-a802-4025-bd49-d7fd4b0a9ee2
@@ -6139,6 +6145,21 @@
     - !<own> e7d04753-28a1-4f9d-bc21-9c8284652226
   Components:
     []
+- !<SceneObject/7b9d2ec8-0f22-49e5-b32e-7165214ccd7e>
+  PrefabRemaps:
+    []
+  Name: RefObjectManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 10.000000, y: 10.000000, z: -65.000000}
+    Rotation: {x: 220.000015, y: -90.000000, z: 0.000000}
+    Scale: {x: 5.000000, y: 5.000001, z: 5.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> a11a6987-0327-4bef-a36c-07d19d1dcd1c
 - !<SceneObject/7b9dfe62-758d-4b65-9bbc-c0398a87bf61>
   PrefabRemaps:
     []
@@ -7760,6 +7781,22 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/a11a6987-0327-4bef-a36c-07d19d1dcd1c>
+  PrefabRemaps:
+    []
+  Name: RefObjectManager
+  Enabled: true
+  ScriptAsset: !<reference> 61d41442-c684-459b-85c8-bc12f69aa291
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      root: !<reference.SceneObject> 675c4b87-0cfe-4af5-b322-df5555d51cfb
+  ScriptTypes:
+    "":
+      {}
 - !<Text/a1d81c56-a3fe-46d8-9f54-ffe97fe7fb8b>
   PrefabRemaps:
     []
@@ -8340,6 +8377,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/aa6f3d8e-755c-47d5-a62f-bbb5c9cc3d57>
+  PrefabRemaps:
+    []
+  Name: Object 0
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -0.267735, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f8b28522-1b69-488c-a48b-a20d1ea6eab4
 - !<AudioComponent/aa940752-ef7e-48ff-8e02-be0e7916b152>
   PrefabRemaps:
     []
@@ -10470,6 +10522,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/d13676ad-8060-4f0b-aa64-7f1f1cb27b5d>
+  PrefabRemaps:
+    []
+  Name: Refresh
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 2.500000, z: 1.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> aa6f3d8e-755c-47d5-a62f-bbb5c9cc3d57
+  Components:
+    - !<own> ebcc2ebb-b5a1-472b-b3c0-0e09172fa891
 - !<SceneObject/d16e33df-ed6a-4906-af0c-fda9057a0975>
   PrefabRemaps:
     []
@@ -11343,6 +11410,7 @@
       text: !<reference.Text> 03cb9af2-870e-4a78-bf71-c0bfc300751e
       previousButton: !<MappingBased.AssignableType_1> c03c3fdf-e2b0-4cd2-92fa-41ee03c8f1fc
       nextButton: !<MappingBased.AssignableType_2> cbb2bfa2-c432-4d5c-8acc-b4f1bdf9d0bc
+      reloadButton: !<MappingBased.AssignableType_3> ebcc2ebb-b5a1-472b-b3c0-0e09172fa891
   ScriptTypes:
     "":
       {}
@@ -11497,6 +11565,47 @@
   ForceCompound: false
   Intangible: false
   ShowCollider: false
+- !<ScriptComponent/ebcc2ebb-b5a1-472b-b3c0-0e09172fa891>
+  PrefabRemaps:
+    []
+  Name: RectangleButton
+  Enabled: true
+  ScriptAsset: !<reference> 173d7099-914c-4f24-ac1c-1b67a66ae138
+  ScriptInputsDefault:
+    _renderOrder: true
+    _inactive: true
+    _playAudio: true
+    _style: true
+    _toggleable: true
+    _defaultToOn: true
+    addCallbacks: true
+    triggerUpCallbacks: true
+    triggerDownCallbacks: true
+    onValueChangeCallbacks: true
+    onFinishedCallbacks: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _renderOrder: 0
+      _size: !<Vec3> {x: 7.000000, y: 3.000000, z: 1.000000}
+      _inactive: false
+      _playAudio: false
+      _style: PrimaryNeutral
+      _toggleable: false
+      _defaultToOn: false
+      addCallbacks: false
+      triggerUpCallbacks:
+        []
+      triggerDownCallbacks:
+        []
+      onValueChangeCallbacks:
+        []
+      onFinishedCallbacks:
+        []
+  ScriptTypes:
+    "":
+      {}
 - !<Text/ebd0d532-64f3-41cd-89e1-8749a83c2c54>
   PrefabRemaps:
     []
@@ -11597,6 +11706,7 @@
       snapCloudRequirements: !<MappingBased.AssignableType> f34b2ca9-bb3e-4714-ac7f-815de53c88ba
       text: !<reference.Text> a0bddfb1-2123-45c1-b52d-0b64044ca211
       image: !<reference.Image> c9332a44-069b-483a-9c53-b24550c8ef3f
+      refObjManager: !<MappingBased.AssignableType_1> a11a6987-0327-4bef-a36c-07d19d1dcd1c
   ScriptTypes:
     "":
       {}
@@ -12187,6 +12297,89 @@
   SizeToFit: false
   FontSize: 60
   Font: !<reference> 709203b6-8b83-40d7-8dda-e5adc4fd2875
+  LayoutRect:
+    left: -7.500000
+    bottom: -2.250000
+    right: 7.500000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<Text/f8b28522-1b69-488c-a48b-a20d1ea6eab4>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |
+    Refresh
+
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
   LayoutRect:
     left: -7.500000
     bottom: -2.250000

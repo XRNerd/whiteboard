@@ -65,7 +65,7 @@
   Enabled: true
   ScriptAsset: !<reference> 2bc3eb80-dc0b-4433-a9f2-8a41e73669b0
   ScriptInputsDefault:
-    {}
+    refObjManager: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -73,6 +73,7 @@
       snapCloudRequirements: !<MappingBased.AssignableType> f34b2ca9-bb3e-4714-ac7f-815de53c88ba
       text: !<reference.Text> fa4548b2-779e-4b23-8691-4fe922dcd3d9
       image: !<reference.Image> dd26c12c-be91-44d7-9807-f5776efdf704
+      refObjManager: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     "":
       {}

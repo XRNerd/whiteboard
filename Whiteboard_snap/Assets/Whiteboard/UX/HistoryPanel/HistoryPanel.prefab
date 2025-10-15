@@ -302,8 +302,8 @@
       image: !<reference.Image> 03016ae7-876e-42c5-9e10-09d0e1625f43
       text: !<reference.Text> e14d4872-78e6-49a5-aa43-4da18b46b742
       previousButton: !<MappingBased.AssignableType_1> ab7bbb89-e9c0-43af-8619-c287fc4ce0b7
-      reloadButton: !<MappingBased.AssignableType_2> 548139d3-2a25-4bd1-a988-7ec1b2085a83
-      nextButton: !<MappingBased.AssignableType_3> 0a9b760d-d437-4143-a0ac-a3f94bd536ab
+      nextButton: !<MappingBased.AssignableType_2> 0a9b760d-d437-4143-a0ac-a3f94bd536ab
+      reloadButton: !<MappingBased.AssignableType_3> 548139d3-2a25-4bd1-a988-7ec1b2085a83
   ScriptTypes:
     "":
       {}

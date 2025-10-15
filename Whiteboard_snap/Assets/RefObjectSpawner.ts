@@ -1,4 +1,5 @@
 import { RefObjectItem } from "RefObjectItem";
+import { RefObjectManager } from "RefObjectManager";
 import { InteractorEvent } from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent";
 
 @component
@@ -6,6 +7,8 @@ export class RefObjectSpawner extends BaseScriptComponent {
     @input prefab: ObjectPrefab;
     //@input remoteAssetHolderPrefab: ObjectPrefab; // The scene object to which the prefab will be attached
     @input spawnDistance: number = 5; // Distance threshold for respawning 
+    //@input manager: RefObjectManager;
+
 
     public remotePrefab: RemoteReferenceAsset;
     public useRemotePrefab: boolean = false;
@@ -98,6 +101,9 @@ export class RefObjectSpawner extends BaseScriptComponent {
             if (this.browser && typeof this.browser.registerSpawnedItem === 'function') {
                 this.browser.registerSpawnedItem(refObjectItem);
             }
+            // Pass references down to the item for self-registration
+            //refObjectItem.manager = this.manager;
+            refObjectItem.modelId = this.useRemotePrefab && this.remotePrefab ? this.remotePrefab.name : (this.prefab ? this.prefab.name : "");
             refObjectItem.onItemGrabbed.add((event: InteractorEvent) => {
                 if(!refObjectItem.isSpawned){
                     spawnedTransform.setLocalScale(this.spawnedScale.uniformScale(2));

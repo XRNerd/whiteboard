@@ -1,4 +1,5 @@
 import { BaseSupaBaseConnectingController } from "Whiteboard/UX/HistoryPanel/Scripts/BaseSupaBaseConnectingController";
+import { RefObjectManager } from "RefObjectManager";
 
 @component
 export class CameraUploader extends BaseSupaBaseConnectingController {
@@ -7,6 +8,10 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
     @input
     @hint("Image to display uploaded file")
     image: Image;
+    @ui.group_end
+
+    @ui.group_start('Inputs')
+    @input refObjManager : RefObjectManager;
     @ui.group_end
 
     private cameraModule: CameraModule = require('LensStudio:CameraModule');
@@ -42,9 +47,11 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
     }
 
     private async addHistoryRecord(image_url: string): Promise<void> {
+        this.refObjManager.snapshotToString();
+
         const result = await this.client.from("boardhistory").insert({
             image_url: image_url,
-            text: "From Client",
+            text: this.refObjManager.snapshotToString(),
             created_at: new Date().toISOString()
         });
         if (result.error) {

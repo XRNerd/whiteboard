@@ -27,6 +27,7 @@
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     image: false
+    refObjManager: false
     snapCloudRequirements: false
     text: false
   ScriptTypesHidden:
@@ -41,6 +42,7 @@
     - snapCloudRequirements: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       text: !<reference.Text> 00000000-0000-0000-0000-000000000000
       image: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      refObjManager: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -51,4 +53,7 @@
     - '// @ui {"widget":"group_start", "label":"Debug"}'
     - // @input Component.Text text
     - '// @input Component.Image image {"hint":"Image to display uploaded file"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Inputs"}'
+    - // @input AssignableType_1 refObjManager
     - '// @ui {"widget":"group_end"}'
