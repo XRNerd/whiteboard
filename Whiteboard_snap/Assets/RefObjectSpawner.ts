@@ -9,6 +9,8 @@ export class RefObjectSpawner extends BaseScriptComponent {
     @input spawnDistance: number = 5; // Distance threshold for respawning 
     //@input manager: RefObjectManager;
 
+    public manager: RefObjectManager;
+
 
     public remotePrefab: RemoteReferenceAsset;
     public useRemotePrefab: boolean = false;
@@ -65,31 +67,34 @@ export class RefObjectSpawner extends BaseScriptComponent {
 
             // Attach the downloaded prefab to the remote holder
             spawnObject.setParent(remoteHolder);
-            
-            
+
+
         } else {
             // print("spawning local prefab")
             spawnObject = this.prefab.instantiate(this.sceneObject);
-            
+
+            print("Spawner: setting manager to: " + this.manager)
+            const refObjectItem = spawnObject.getComponent(RefObjectItem.getTypeName()) as RefObjectItem;
+            refObjectItem.manager = this.manager;
+
             spawnedTransform = spawnObject.getTransform();
-            this.spawnedScale = spawnedTransform.getLocalScale(); 
+            this.spawnedScale = spawnedTransform.getLocalScale();
 
             spawnedTransform.setLocalScale(this.spawnedScale.uniformScale(2));
             //Rotate the object 90 degrees on the Y-axis
             //spawnedTransform.setLocalRotation(quat.angleAxis(Math.PI / 2, vec3.up()));
-            this.spawnedScale = spawnedTransform.getLocalScale(); 
+            this.spawnedScale = spawnedTransform.getLocalScale();
 
         }
 
 
 
         //var spawnedTransform = spawnObject.getTransform();
-        spawnedTransform.setLocalPosition(new vec3(0,0,0));
+        spawnedTransform.setLocalPosition(new vec3(0, 0, 0));
         spawnedTransform.setLocalRotation(quat.quatIdentity());
         let refObjectItem;
         // Get the FreeDrawItem component and set up its events
-        if(this.useRemotePrefab)
-        {
+        if (this.useRemotePrefab) {
             refObjectItem = remoteHolder.getComponent(RefObjectItem.getTypeName()) as RefObjectItem;
         } else {
             refObjectItem = spawnObject.getComponent(RefObjectItem.getTypeName()) as RefObjectItem;
@@ -105,11 +110,11 @@ export class RefObjectSpawner extends BaseScriptComponent {
             //refObjectItem.manager = this.manager;
             refObjectItem.modelId = this.useRemotePrefab && this.remotePrefab ? this.remotePrefab.name : (this.prefab ? this.prefab.name : "");
             refObjectItem.onItemGrabbed.add((event: InteractorEvent) => {
-                if(!refObjectItem.isSpawned){
+                if (!refObjectItem.isSpawned) {
                     spawnedTransform.setLocalScale(this.spawnedScale.uniformScale(2));
                     refObjectItem.isSpawned = true;
                 }
-                
+
             });
             // Listen for item release events
             refObjectItem.onItemReleased.add((event: InteractorEvent) => {
@@ -124,8 +129,8 @@ export class RefObjectSpawner extends BaseScriptComponent {
         const localRot = spawnedTransform.getLocalRotation();
         const worldPos = spawnedTransform.getWorldPosition();
         const worldRot = spawnedTransform.getWorldRotation();
-        
-        
+
+
         // print(`Spawned Object Transform:
         //     Local Position: (${localPos.x.toFixed(2)}, ${localPos.y.toFixed(2)}, ${localPos.z.toFixed(2)})
         //     Local Rotation: (${localRot.x.toFixed(2)}, ${localRot.y.toFixed(2)}, ${localRot.z.toFixed(2)}, ${localRot.w.toFixed(2)})
@@ -136,7 +141,7 @@ export class RefObjectSpawner extends BaseScriptComponent {
     private checkItemDistance(item: RefObjectItem): void {
         const itemPos = item.getWorldPosition();
         const spawnerPos = this.getSceneObject().getTransform().getWorldPosition();
-        
+
         // Calculate distance between item and spawner
         const diff = new vec3(
             itemPos.x - spawnerPos.x,
@@ -172,16 +177,16 @@ export class RefObjectSpawner extends BaseScriptComponent {
         );
     }
 
-  /* on asset successfully downloaded */
-  private onDownloaded(asset: Asset): void {
-    // print(asset.name + ' was successfully downloaded, type is ' + asset.getTypeName());
-    this.downloadedPrefab = asset as ObjectPrefab;     
-    this.spawnInitialItem();
-  }
-  /* on remote asset download failed */
-  private onFailed(): void {
-    print(this.remotePrefab.name + ' was not downloaded');
-    // fallback logic here
-  }
+    /* on asset successfully downloaded */
+    private onDownloaded(asset: Asset): void {
+        // print(asset.name + ' was successfully downloaded, type is ' + asset.getTypeName());
+        this.downloadedPrefab = asset as ObjectPrefab;
+        this.spawnInitialItem();
+    }
+    /* on remote asset download failed */
+    private onFailed(): void {
+        print(this.remotePrefab.name + ' was not downloaded');
+        // fallback logic here
+    }
 }
 

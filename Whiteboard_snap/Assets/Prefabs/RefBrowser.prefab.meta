@@ -249,6 +249,7 @@
   Enabled: true
   ScriptAsset: !<reference> a77663cd-80af-4e16-a568-f5fbf0dfbf28
   ScriptInputsDefault:
+    refObjectManager: true
     itemsPerPage: true
   ScriptTypesDefault:
     {}
@@ -261,6 +262,7 @@
         - !<reference> b55d7558-8015-4079-96b9-da97ae666bcc
         - !<reference> 7fb2920a-9bf9-41af-b2a4-10b5c4af3759
         - !<reference> 1673dd1e-6472-445b-8fbf-ac97ecc8bcdf
+      refObjectManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       root: !<reference.SceneObject> 659e531b-3058-4b07-7ac0-005adeba1998
       spawnedObjectsRoot: !<reference.SceneObject> 7a0e1a21-359a-443c-6764-e8bc7577592d
       objectWidth: !<float> 3.000000

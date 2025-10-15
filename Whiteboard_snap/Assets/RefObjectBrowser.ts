@@ -1,17 +1,19 @@
 import { RefObjectItem } from "RefObjectItem"
-import { RefObjectSpawner} from "RefObjectSpawner"
+import { RefObjectSpawner } from "RefObjectSpawner"
 import { InteractorEvent } from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent";
 import { PinchButton } from "SpectaclesInteractionKit.lspkg/Components/UI/PinchButton/PinchButton";
+import { RefObjectManager } from "RefObjectManager";
 
 
 type SpawnerPrefabSource =
-  | { type: 'local', prefab: ObjectPrefab }
-  | { type: 'remote', remotePrefab: RemoteReferenceAsset };
+    | { type: 'local', prefab: ObjectPrefab }
+    | { type: 'remote', remotePrefab: RemoteReferenceAsset };
 
 @component
 export class RefObjectBrowser extends BaseScriptComponent {
     @input spawnerPrefab: ObjectPrefab;
     @input() objectPrefabs: ObjectPrefab[];
+    @input refObjectManager: RefObjectManager;
     //@input() remoteObjectPrefabs: RemoteReferenceAsset[];
 
     @input root: SceneObject;
@@ -22,8 +24,8 @@ export class RefObjectBrowser extends BaseScriptComponent {
     @input itemsPerRow: number = 3;
     @input itemsPerPage: number = 9;
 
-   freeDrawButtonNext: PinchButton;
-   freeDrawButtonPrev: PinchButton;
+    freeDrawButtonNext: PinchButton;
+    freeDrawButtonPrev: PinchButton;
 
     private spawnerPrefabs: SceneObject[] = [];
     private spawnedItems: RefObjectItem[] = [];
@@ -68,6 +70,7 @@ export class RefObjectBrowser extends BaseScriptComponent {
             if (refObjectSpawner !== null) {
                 // Pass reference to this browser
                 refObjectSpawner.browser = this;
+                refObjectSpawner.manager = this.refObjectManager;
                 // if (typeof freeDrawSpawner.browser === 'function') {
                 //     freeDrawSpawner.browser = this;
                 // } else {

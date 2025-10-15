@@ -31,6 +31,7 @@
     itemsPerRow: false
     objectPrefabs: false
     objectWidth: false
+    refObjectManager: false
     root: false
     spawnedObjectsRoot: false
     spawnerPrefab: false
@@ -47,6 +48,7 @@
     - spawnerPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       objectPrefabs: !<reference.ObjectPrefab[]>
         []
+      refObjectManager: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       root: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       spawnedObjectsRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       objectWidth: !<float> 5.000000
@@ -60,6 +62,7 @@
   InputLines:
     - // @input Asset.ObjectPrefab spawnerPrefab
     - "// @input Asset.ObjectPrefab[] objectPrefabs"
+    - // @input AssignableType refObjectManager
     - // @input SceneObject root
     - // @input SceneObject spawnedObjectsRoot
     - // @input float objectWidth = 5
