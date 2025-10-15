@@ -4,6 +4,7 @@ import { SupabaseClient, createClient } from "SupabaseClient.lspkg/supabase-snap
 import { SnapCloudRequirements } from "Examples/SnapCloudRequirements";
 const remoteMediaModule = require('LensStudio:RemoteMediaModule');
 const internetModule = require('LensStudio:InternetModule');
+import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
 
 /**
  * Manages all aspects of the RAM including solving, visualizing, selection, etc.
@@ -15,6 +16,9 @@ export class HistoryPanelController extends BaseScriptComponent {
     private client: SupabaseClient<Database>;
     private readonly log = new NativeLogger("HistoryPanelController");
     private uid: string;
+    private allRecords: any[] = [];
+    private currentIndex: number = 0;
+    private totalRecords: number = 0;
     /* #endregion [Private Variables] */
 
     /* #region [Inspector Inputs] */
@@ -33,6 +37,14 @@ export class HistoryPanelController extends BaseScriptComponent {
     @hint("Text to display OCR or summary")
     text: Text;
     @ui.group_end
+
+    @input
+    @hint("Previous Button")
+    previousButton: RectangleButton;
+
+    @input
+    @hint("Next Button")
+    nextButton: RectangleButton;
     /* #endregion [Inspector Inputs] */
 
     /* #region [Private Methods] */
@@ -66,27 +78,56 @@ export class HistoryPanelController extends BaseScriptComponent {
         }
     }
     /**
-     * Load the data for the history panel
+     * Load all data for the history panel and set up navigation
      * 
      * @returns Promise<void>
      */
     private async loadData(): Promise<void> {
-        this.log.d("Loading Data from boardhistory table");
+        this.log.d("Loading all data from boardhistory table");
 
-        // Just load the first record for now
-        const dataResponse = await this.client.from("boardhistory").select("*").limit(1);
-        const firstRecord = dataResponse.data[0];
-        this.log.d("data loaded: " + JSON.stringify(firstRecord));
+        // Load all records
+        const dataResponse = await this.client.from("boardhistory").select("*").order("created_at", { ascending: false });
+        
+        if (dataResponse.error) {
+            this.log.e("Error loading data: " + JSON.stringify(dataResponse.error));
+            return;
+        }
+
+        this.allRecords = dataResponse.data;
+        this.totalRecords = this.allRecords.length;
+        this.currentIndex = 0;
+
+        this.log.d(`Loaded ${this.totalRecords} records`);
+
+        if (this.totalRecords > 0) {
+            await this.loadRecordByIndex(0);
+        }
+    }
+
+    /**
+     * Load a specific record by index
+     * 
+     * @param index - The index of the record to load
+     * @returns Promise<void>
+     */
+    private async loadRecordByIndex(index: number): Promise<void> {
+        if (index < 0 || index >= this.totalRecords) {
+            this.log.e(`Invalid index: ${index}. Total records: ${this.totalRecords}`);
+            return;
+        }
+
+        const record = this.allRecords[index];
+        this.log.d(`Loading record ${index + 1}/${this.totalRecords}: ${JSON.stringify(record)}`);
 
         // Set the text
-        this.text.text = firstRecord.text;
+        this.text.text = record.text;
 
         // Load the image
-        this.log.d("loading image from: " + firstRecord.image_url);
-        const fileResponse = await this.client.storage.from("boardsnapshots").download(firstRecord.image_url);
+        this.log.d("loading image from: " + record.image_url);
+        const fileResponse = await this.client.storage.from("boardsnapshots").download(record.image_url);
 
         if (fileResponse.error) {
-            this.log.e("Error fetchig image: " + JSON.stringify(fileResponse.error));
+            this.log.e("Error fetching image: " + JSON.stringify(fileResponse.error));
             return;
         }
         else {
@@ -100,8 +141,28 @@ export class HistoryPanelController extends BaseScriptComponent {
                 (error) => { print("Failed due to error"); }
             );
         }
+    }
 
+    /**
+     * Navigate to the next record with wrapping
+     */
+    private async goToNext(): Promise<void> {
+        if (this.totalRecords === 0) return;
 
+        this.currentIndex = (this.currentIndex + 1) % this.totalRecords;
+        await this.loadRecordByIndex(this.currentIndex);
+        this.log.d(`Navigated to next record. Current index: ${this.currentIndex}`);
+    }
+
+    /**
+     * Navigate to the previous record with wrapping
+     */
+    private async goToPrevious(): Promise<void> {
+        if (this.totalRecords === 0) return;
+
+        this.currentIndex = this.currentIndex === 0 ? this.totalRecords - 1 : this.currentIndex - 1;
+        await this.loadRecordByIndex(this.currentIndex);
+        this.log.d(`Navigated to previous record. Current index: ${this.currentIndex}`);
     }
 
     /**
@@ -140,11 +201,31 @@ export class HistoryPanelController extends BaseScriptComponent {
     }
 
     /**
+     * Set up button click handlers for navigation
+     */
+    private setupButtonHandlers(): void {
+        if (this.previousButton) {
+            this.previousButton.onTriggerUp.add(() => {
+                this.log.d("Previous button clicked");
+                this.goToPrevious();
+            });
+        }
+
+        if (this.nextButton) {
+            this.nextButton.onTriggerUp.add(() => {
+                this.log.d("Next button clicked");
+                this.goToNext();
+            });
+        }
+    }
+
+    /**
      * Start the acoustic reflection calculation when the scene begins
      */
     async onStart() {
         await this.initSupabase();
         await this.loadData();
+        this.setupButtonHandlers();
     }
     /* #endregion [Lifecycle Methods] */
 }

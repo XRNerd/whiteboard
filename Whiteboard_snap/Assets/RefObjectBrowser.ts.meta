@@ -1,0 +1,69 @@
+- !<AssetImportMetadata/71b818a8-772e-4054-8840-05f98abf1a1b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a77663cd-80af-4e16-a568-f5fbf0dfbf28
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a77663cd-80af-4e16-a568-f5fbf0dfbf28
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 31c991bb-9175-45ab-b197-6d444dce53ec
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/31c991bb-9175-45ab-b197-6d444dce53ec>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 96ff625f-a706-4515-acec-c5d096810519
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    horizontalSpacing: false
+    itemsPerPage: false
+    itemsPerRow: false
+    objectPrefabs: false
+    objectWidth: false
+    root: false
+    spawnedObjectsRoot: false
+    spawnerPrefab: false
+    verticalSpacing: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - spawnerPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      objectPrefabs: !<reference.ObjectPrefab[]>
+        []
+      root: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      spawnedObjectsRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      objectWidth: !<float> 5.000000
+      horizontalSpacing: !<float> 7.000000
+      verticalSpacing: !<float> 15.000000
+      itemsPerRow: !<float> 0.000000
+      itemsPerPage: !<float> 9.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.ObjectPrefab spawnerPrefab
+    - "// @input Asset.ObjectPrefab[] objectPrefabs"
+    - // @input SceneObject root
+    - // @input SceneObject spawnedObjectsRoot
+    - // @input float objectWidth = 5
+    - // @input float horizontalSpacing = 7
+    - // @input float verticalSpacing = 15
+    - // @input float itemsPerRow = 3
+    - // @input float itemsPerPage = 9

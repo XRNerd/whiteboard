@@ -27,6 +27,8 @@
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     image: false
+    nextButton: false
+    previousButton: false
     snapCloudRequirements: false
     text: false
   ScriptTypesHidden:
@@ -41,6 +43,8 @@
     - snapCloudRequirements: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       image: !<reference.Image> 00000000-0000-0000-0000-000000000000
       text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      previousButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      nextButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -52,3 +56,5 @@
     - '// @input Component.Image image {"hint":"Image to display snapshots"}'
     - '// @input Component.Text text {"hint":"Text to display OCR or summary"}'
     - '// @ui {"widget":"group_end"}'
+    - '// @input AssignableType_1 previousButton {"hint":"Previous Button"}'
+    - '// @input AssignableType_2 nextButton {"hint":"Next Button"}'

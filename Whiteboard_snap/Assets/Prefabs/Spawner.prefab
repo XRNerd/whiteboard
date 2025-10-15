@@ -1,0 +1,61 @@
+- !<ObjectPrefab/507c8474-c689-4bde-8925-9240d038cf6a>
+  PackagePath: ""
+  objects:
+    - !<own> d889710f-8106-4e0e-b8cc-b59d62766dee
+  LazyLoading: false
+  RetainAssets: true
+- !<RenderMeshVisual/2418e5ce-6b1d-4d58-9d8a-33a1196ea668>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: false
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    []
+  Mesh: !<reference> 4d1cd2d7-2137-47d9-af4d-dce637b34b4c
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ScriptComponent/4bcca564-935e-41ba-8e01-fe5318e234a0>
+  PrefabRemaps:
+    []
+  Name: RefObjectSpawner
+  Enabled: true
+  ScriptAsset: !<reference> 86bd6060-9947-472d-9f13-7804ca618122
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      prefab: !<reference.ObjectPrefab> 1673dd1e-6472-445b-8fbf-ac97ecc8bcdf
+      spawnDistance: !<float> 4.000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/d889710f-8106-4e0e-b8cc-b59d62766dee>
+  PrefabRemaps:
+    - 2418e5ce-6b1d-4d58-9d8a-33a1196ea668: 84e912c5-06f0-4641-b8a1-61012932fae1
+    - 4bcca564-935e-41ba-8e01-fe5318e234a0: 4bcca564-935e-41ba-71fe-01ace71dcb5f
+    - d889710f-8106-4e0e-b8cc-b59d62766dee: d889710f-8106-4e0e-4733-4a629d899211
+  Name: Spawner
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 4.596302, y: 0.000000, z: 9.343735}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4bcca564-935e-41ba-8e01-fe5318e234a0
+    - !<own> 2418e5ce-6b1d-4d58-9d8a-33a1196ea668
