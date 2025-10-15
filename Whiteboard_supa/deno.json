@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "hono": "npm:hono@^4.9.12",
+    "supabase": "npm:supabase@^2.51.0"
+  }
+}
