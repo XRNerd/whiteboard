@@ -31,14 +31,27 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
         this.cameraTextureProvider = this.cameraTexture
             .control as CameraTextureProvider;
 
-        this.registration = this.cameraTextureProvider.onNewFrame.add(async(frame) => await this.processFrame());
+        this.registration = this.cameraTextureProvider.onNewFrame.add(async (frame) => await this.processFrame());
     }
 
-    private async processFrame() : Promise<void> {
+    private async processFrame(): Promise<void> {
         this.cameraTextureProvider.onNewFrame.remove(this.registration);
         let singleTexture = this.cameraTexture.copyFrame();
         var result = await this.addSnapshotTexture(singleTexture);
         this.DebugLog("Uploaded snapshot, result: " + result);
+    }
+
+    private async addHistoryRecord(image_url: string): Promise<void> {
+        const result = await this.client.from("boardhistory").insert({
+            image_url: image_url,
+            text: "From Client",
+            created_at: new Date().toISOString()
+        });
+        if (result.error) {
+            this.DebugLog("Error adding history record: " + result.error.message);
+        } else {
+            this.DebugLog("History record added.");
+        }
     }
 
     private async addSnapshotBase64(base64String: string): Promise<string> {
@@ -47,6 +60,13 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
                 data: base64String
             }
         });
+        // Get the image path back from the function
+        const image_url = result.data.path as string;
+
+        // Add the history record
+        await this.addHistoryRecord(image_url);
+
+        // Return the image path
         return result.data.path as string;
     }
 
@@ -55,7 +75,7 @@ export class CameraUploader extends BaseSupaBaseConnectingController {
             const base64String = Base64.encodeTextureAsync(tex, (base64String) => {
                 this.addSnapshotBase64(base64String).then(resolve).catch(reject);
             }, () => { print("Failed to encode texture due to error"); }, CompressionQuality.HighQuality, EncodingType.Jpg);
-        });    
+        });
     }
 
     private DebugLog(message: string): void {
